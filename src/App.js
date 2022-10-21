@@ -1,12 +1,12 @@
+import React from "react";
 import "./App.css";
-import Navbar from "./components/navbar";
-import Footer from "./components/footer";
+import { BrowserRouter } from "react-router-dom";
+import Routes from "./router/Routes";
 function App() {
   return (
-    <div>
-      <Navbar />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes />
+    </BrowserRouter>
   );
 }
 
