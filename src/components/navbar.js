@@ -9,7 +9,7 @@ export default function Navbar() {
         <span>
           <Camera />
         </span>
-        <span class="">
+        <span class= "App-logo">
           {/* <img class="h-10 inline"
           src="https://tailwindcss.com/_next/static/media/social-square.b622e290e82093c36cca57092ffe494f.jpg" /> */}
           360 Kids
@@ -20,15 +20,15 @@ export default function Navbar() {
         </span> */}
       </div>
 
-      <ul class="md:flex md:items-center">
-        <li class="my-6 md:my-0">
-          <a href="#" class="">
-            About Us
-          </a>
-        </li>
-        <button class="bg-cyan-400 text-white rounded">Join As Center</button>
-        <h2 class=""></h2>
-      </ul>
+<div class="flex flex-row space-x-4 space-x-reverse">
+<div>
+<button class="About-text flex-auto">About Us</button>
+</div>
+<div>
+<button class="Btn Btn-text">Join As Center</button>
+</div>
+</div>
+     
     </nav>
   );
 }

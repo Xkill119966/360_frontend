@@ -5,13 +5,22 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+  position: absolute;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  color: #212121;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
+} */
 
 .App-header {
   background-color: #282c34;
@@ -37,6 +46,21 @@
   }
 }
 
+input{
+  border-color: #212121
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "WorkSans";
+  src: url("../public/fonts/WorkSans.ttf");
+}
+
+@font-face {
+  font-family: "Gordita";
+  src: url("../public/fonts/Gordita-Regular.otf");
+}
+
