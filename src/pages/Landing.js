@@ -1,3 +1,5 @@
+import React from "react";
+import { Link } from "react-router-dom";
 export default function SearchPage() {
   return (
     <>
@@ -31,12 +33,13 @@ export default function SearchPage() {
             </h3>
           </div>
           <div className="flex mt-10 text-left">
-            <a
+            <Link to={"/form"}>
+            <span
               className="font-bold text-lg text-blue-800 hover:text-blue-800"
-              href="#"
             >
+              
               Join As A Center
-            </a>
+            </span>
             <svg
               width="18"
               height="2"
@@ -69,6 +72,7 @@ export default function SearchPage() {
                 stroke-linejoin="round"
               />
             </svg>
+            </Link>
           </div>
         </div>
       </div>

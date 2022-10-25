@@ -8,10 +8,8 @@ function Router(params) {
   return (
     <Layout>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Landing />} />
         <Route path="/form" element={<FormPage />} />
-        <Route path="/landing" element={<Landing />} />
-
       </Routes>
     </Layout>
   );
