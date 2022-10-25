@@ -4,13 +4,15 @@ export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
 
   return (
-    <nav class="bg-white px-2 flex justify-between items-center sm:px-4 py-2.5  w-full z-20  border-b fixed">
-      <a href="https://flowbite.com/" class="flex items-center">
+    <nav class="bg-white px-2 flex justify-between items-center sm:px-4 py-2.5  w-full z-20  border-b ">
+      {/* Logo */}
+      <div class="flex items-center">
         <button
           type="button"
-          class="items-center p-2 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          class="items-center p-2 text-sm text-gray-500 rounded-lg 
+           block xl:hidden
+           hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
         >
-          <span class="sr-only">Open main menu</span>
           <svg
             width="32"
             height="20"
@@ -57,7 +59,7 @@ export default function Navbar() {
         <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-black">
           360 Kids
         </span>
-      </a>
+      </div>
       <div class="flex items-center gap-14 p-0 ">
         <p className="text-base font-medium text-black hidden xl:block">
           About Us
