@@ -25,7 +25,9 @@ module.exports = {
       // => @media (min-width: 1200px) { ... }
     },
     extend: {
-      
+      backgroundImage: {
+        'enquriy': "url('../public/images/bg.jpg')",
+      },
     },
   },
   plugins: [],
