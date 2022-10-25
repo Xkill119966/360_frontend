@@ -1,13 +1,14 @@
 import "./App.css";
 import Navbar from "./components/navbar";
-import FromPage from "./components/FormPage";
+import FormPage from "./components/FormPage";
 
 import Footer from "./components/footer";
+import LandingPage from "./components/Landing";
 function App() {
   return (
     <div>
       <Navbar />
-      <FromPage />
+      <FormPage />
       <Footer />
     </div>
   );

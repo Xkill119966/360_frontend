@@ -9,6 +9,7 @@ module.exports = {
       current: "currentColor",
       primary: "#FE9800",
       hoverColor: "#3E0ABD",
+      'gray' : "#21212152"
     },
     screens: {
       sm: "375px",
@@ -24,6 +25,7 @@ module.exports = {
       // => @media (min-width: 900px) { ... }
     },
     extend: {
+      
     },
   },
   plugins: [],
