@@ -1,4 +1,7 @@
+import React, { useState } from "react";
+import Modal from "../components/Modal";
 export default function FormPage() {
+  const [showModal, setShowModal] = useState(false);
   return (
     <>
       <div className="px-8 pt-6 pb-8 mb-4 gap-10">
@@ -8,47 +11,48 @@ export default function FormPage() {
             Sign up before launch to get $100 worth of credit !
           </h1>
           <div className="my-4 flex">
-          <p className="text-gray my-4">Join with us to get more leads !</p>
-          <div className="flex mt-4 mx-2 text-left">
-            <a
-              className="font-bold text-md text-blue-800 hover:text-blue-800 "
-              href="#"
-            >
-             How It Works
-            </a>
-            <svg
-              width="18"
-              height="2"
-              viewBox="0 0 18 2"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="mt-3.5 ml-1.5"
-            >
-              <path
-                d="M1 1H17"
-                stroke="#3E0ABD"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-            <svg
-              width="8"
-              height="14"
-              viewBox="0 0 8 14"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="mt-2"
-            >
-              <path
-                d="M1 13L7 7L1 1"
-                stroke="#3E0ABD"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </div>
+            <p className="text-gray my-4">Join with us to get more leads !</p>
+            <div className="flex mt-4 mx-2 text-left">
+              <a
+                className="font-bold text-md text-blue-800 hover:text-blue-800 "
+                href="#"
+                onClick={() => setShowModal(true)}
+              >
+                How It Works
+              </a>
+              <svg
+                width="18"
+                height="2"
+                viewBox="0 0 18 2"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="mt-3.5 ml-1.5"
+              >
+                <path
+                  d="M1 1H17"
+                  stroke="#3E0ABD"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <svg
+                width="8"
+                height="14"
+                viewBox="0 0 8 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="mt-2"
+              >
+                <path
+                  d="M1 13L7 7L1 1"
+                  stroke="#3E0ABD"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
           </div>
         </div>
         <div className="xl:mx-64 lg:mx-24 md:mx-16 sm:mx-4 xl:pb-40 lg:pb-40 md:pb-40 sm:pb-96 grid gap-y-2">
@@ -493,7 +497,7 @@ export default function FormPage() {
             </div>
             <div className="my-4 text-center">
               <a
-                className="font-bold text-lg text-blue-800 hover:text-blue-800" 
+                className="font-bold text-lg text-blue-800 hover:text-blue-800"
                 href="#"
               >
                 How it works
@@ -502,6 +506,8 @@ export default function FormPage() {
           </form>
         </div>
       </div>
+
+      <Modal isVisible={showModal} onClose={() => setShowModal(false)}></Modal>
     </>
   );
 }
