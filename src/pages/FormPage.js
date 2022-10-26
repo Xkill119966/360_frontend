@@ -1,9 +1,30 @@
 import React, { useState } from "react";
 import Modal from "../components/Modal";
+import ImageSlider from "../components/Slider";
 export default function FormPage() {
+  const SliderData = [
+    {
+      image: "rest",
+      description: "description1",
+      text: "text1",
+    },
+    {
+      image: "rest",
+      description: "description2",
+      text: "text1",
+    },
+    {
+      image: "rest",
+      description: "description3",
+      text: "text1",
+    },
+  ];
   const [showModal, setShowModal] = useState(false);
   return (
     <>
+      <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
+        <ImageSlider slides={SliderData} />
+      </Modal>
       <div className="px-8 pt-6 pb-8 mb-4 gap-10">
         <div className="xl:ml-64 xl:mr-52 lg:ml-24 lg:mr-20 md:ml-16 md:mr-12 sm:ml-4 sm:mr-2 pt-16">
           <p className="text-dark">We are launching soon !</p>
@@ -506,8 +527,6 @@ export default function FormPage() {
           </form>
         </div>
       </div>
-
-      <Modal isVisible={showModal} onClose={() => setShowModal(false)}></Modal>
     </>
   );
 }
