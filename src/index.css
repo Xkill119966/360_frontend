@@ -17,4 +17,17 @@ code {
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Gordita";
+  src: url("../public/fonts/Gordita-Regular.otf");
+}
 
+@font-face {
+  font-family: "WorkSans";
+  src: url("../public/fonts/WorkSans.ttf");
+}
+
+@font-face {
+  font-family: "Gordita-Bold";
+  src: url("../public/fonts/Gordita-Bold.otf");
+}

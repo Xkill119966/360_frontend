@@ -9,7 +9,8 @@ module.exports = {
       current: "currentColor",
       primary: "#FE9800",
       hoverColor: "#3E0ABD",
-      'gray' : "#21212152"
+      'gray' : "#21212152",
+      'darkgray' : "#21212184"
     },
     screens: {
       sm: "375px",
@@ -28,6 +29,11 @@ module.exports = {
       backgroundImage: {
         'enquriy': "url('../public/images/bg.jpg')",
       },
+      fontFamily : {
+        'gordita':['Gordita'],
+        'workSans':['WorkSans'],
+        'gordita-bold':['Gordita-Bold'],
+      }
     },
   },
   plugins: [],

@@ -13,6 +13,7 @@ function Router(params) {
         <Route path="/form" element={<FormPage />} />
         <Route path="/thanks" element={<ThanksPage />} />
         <Route path="/enquiry" element={<EnquiryPage />} />
+        <Route path="/landing" element={<LandingPage />} />
       </Routes>
     </Layout>
   );
