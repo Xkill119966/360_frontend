@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 export default function LandingPage() {
   return (
     <>
-      <div className="xl:ml-64 xl:mr-52 lg:ml-24 lg:mr-20 md:ml-16 md:mr-12 sm:ml-4 sm:mr-2 pt-12">
-        <h3 className="my-4 font-bold text-gray-900 dark:text-white xl:text-7xl lg:text-6xl md:text-4xl sm:text-3xl font-gordita-bold">
+      <div className="xl:ml-64 xl:mr-52 lg:ml-24 lg:mr-20 md:ml-16 md:mr-12 sm:ml-4 sm:mr-2 pt-24 pb-16">
+        <h3 className="my-4 font-bold text-gray-900 xl:text-7xl lg:text-6xl md:text-4xl sm:text-3xl font-gordita-bold">
           Find perfect enrichment centers for your kid
         </h3>
         <p className="text-gray my-4 font-gordita">
@@ -20,20 +20,20 @@ export default function LandingPage() {
               placeholder="Postal code"
             />
           </div>
-          <Link to={"/enquiry"} >
-          <div className="my-3 xl:mx-2">
-            <button
-              className="bg-primary hover:bg-primary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline xl:w-1/2 lg:w-full md:w-full sm:w-full font-gordita"
-              type="button"
-            >
-              Search
-            </button>
-          </div>
+          <Link to={"/enquiry"}>
+            <div className="my-3 xl:mx-2">
+              <button
+                className="bg-primary hover:bg-primary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline xl:w-1/2 lg:w-full md:w-full sm:w-full font-gordita"
+                type="button"
+              >
+                Search
+              </button>
+            </div>
           </Link>
         </form>
         <div className="grid grid-cols-6">
           <div className="my-4 col-span-1">
-            <h3 className="my-4 font-bold text-gray-900 dark:text-white xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl font-gordita-bold">
+            <h3 className="my-4 font-bold text-gray-900 xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl font-gordita-bold">
               OR
             </h3>
           </div>

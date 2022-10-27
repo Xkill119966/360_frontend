@@ -4,7 +4,7 @@ export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
 
   return (
-    <nav class="bg-white fixed px-2 flex justify-between items-center sm:px-4 py-2.5  w-full z-20  ">
+    <nav class="bg-white fixed px-2 flex justify-between items-center sm:px-4 py-2.5  w-full z-20">
       {/* Logo */}
       <div class="flex items-center">
         <button
@@ -56,17 +56,17 @@ export default function Navbar() {
             fill="#FE9800"
           />
         </svg>
-        <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-black">
+        <span class="self-center text-xl whitespace-nowrap dark:text-black font-inter font-bold">
           360 Kids
         </span>
       </div>
       <div class="flex items-center gap-14 p-0 ">
-        <p className="text-base font-medium text-black hidden xl:block">
+        <p className="text-base font-medium text-black hidden xl:block font-gordita">
           About Us
         </p>
         <button
           type="button"
-          class="text-white bg-primary focus:outline-none font-medium rounded text-sm px-5 py-2.5 text-center  md:mr-0"
+          class="text-white bg-primary focus:outline-none font-medium rounded text-sm px-5 py-2.5 text-center md:mr-0 font-workSans"
         >
           Join As Center
         </button>
