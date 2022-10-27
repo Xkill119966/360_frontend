@@ -1,25 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import Modal from "../components/Modal";
+import ImageSlider from "../components/Slider";
 export default function FormPage() {
+  const SliderData = [
+    {
+      image: "rest",
+      description: "description1",
+      text: "text1",
+    },
+    {
+      image: "rest",
+      description: "description2",
+      text: "text1",
+    },
+    {
+      image: "rest",
+      description: "description3",
+      text: "text1",
+    },
+  ];
+  const [showModal, setShowModal] = useState(false);
   return (
     <>
-      <div className="px-8 pb-8 mb-4 gap-10">
-        <div className="xl:ml-64 xl:mr-52 lg:ml-24 lg:mr-20 md:ml-16 md:mr-12 sm:ml-4 sm:mr-2 pt-12">
+      <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
+        <ImageSlider slides={SliderData} />
+      </Modal>
+      <div className="px-8 pt-6 pb-8 mb-4 gap-10">
+        <div className="xl:ml-64 xl:mr-52 lg:ml-24 lg:mr-20 md:ml-16 md:mr-12 sm:ml-4 sm:mr-2 pt-16">
           <p className="text-dark font-gordita">We are launching soon !</p>
           <h1 className="my-4 font-bold text-gray-900 dark:text-white xl:text-7xl lg:text-6xl md:text-4xl sm:text-3xl font-gordita-bold">
             Sign up before launch to get $100 worth of credit !
           </h1>
           <div className="my-4 flex">
-          <p className="text-gray my-4 font-gordita">Join with us to get more leads !</p>
-          <div  className="flex mt-4 mx-2 text-left">
-            <a
-              className="font-bold text-md text-blue-800 hover:text-blue-800 font-gordita"
-              href="#"
-            >
-             How It Works
-            </a>
-            <svg
+            <p className="text-gray my-4 font-gordita">Join with us to get more leads !</p>
+            <div className="flex mt-4 mx-2 text-left">
+              <a
+                className="font-bold text-md text-blue-800 hover:text-blue-800 font-gordita"
+                href="#"
+                onClick={() => setShowModal(true)}
+              >
+                How It Works
+              </a>
+              <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -32,8 +55,8 @@ export default function FormPage() {
                   stroke-linejoin="round"
                   d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
                 />
-              </svg>
-          </div>
+                </svg>
+            </div>
           </div>
         </div>
         <div className="xl:mx-64 lg:mx-24 md:mx-16 sm:mx-4 xl:pb-40 lg:pb-40 md:pb-40 sm:pb-96 grid gap-y-2">
@@ -443,7 +466,9 @@ export default function FormPage() {
             <h5 className="my-2 mt-8 font-bold text-gray-900 dark:text-white text-left font-gordita-bold">
               Please fill in your personal information
             </h5>
-            <p className="text-darkgray my-2 mb-4 font-gordita">This information will not be shared publicly !</p>
+            <p className="text-darkgray my-2 mb-4 font-gordita">
+              This information will not be shared publicly !
+            </p>
             <div className="my-4">
               <input
                 className="border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline font-workSans"
@@ -479,8 +504,9 @@ export default function FormPage() {
             </div>
             <div className="my-4 text-center">
               <a
-                className="font-bold text-lg text-blue-800 hover:text-blue-800 font-gordita" 
+                className="font-bold text-lg text-blue-800 hover:text-blue-800 font-gordita"
                 href="#"
+                onClick={() => setShowModal(true)}
               >
                 How it works
               </a>

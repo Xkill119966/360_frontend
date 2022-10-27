@@ -4,7 +4,7 @@ export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
 
   return (
-    <nav class="bg-white px-2 flex justify-between items-center sm:px-4 py-2.5  w-full z-20  border-b ">
+    <nav class="bg-white fixed px-2 flex justify-between items-center sm:px-4 py-2.5  w-full z-20  ">
       {/* Logo */}
       <div class="flex items-center">
         <button
