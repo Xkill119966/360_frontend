@@ -1,17 +1,19 @@
+import Image from "../assets/images/Rectangle_2.png"
+
 export const SliderData = [
   {
-    image: "rest",
-    description: "description1",
-    text: "text1",
+    image: Image,
+    description: "Parents come to our platform with their needs",
+    text: "We collect detailed information about exactly what customers is looking for",
   },
   {
-    image: "rest",
-    description: "description2",
-    text: "text1",
+    image: Image,
+    description: "Parents find you on 360 kids",
+    text: "We charge a small fee for each plan and we give you the phone number and email address of each parents so you can reach out",
   },
   {
-    image: "rest",
-    description: "description3",
-    text: "text1",
+    image: Image,
+    description: "Grow your business fast",
+    text: "Join as a center now and get instant access to leads for your business",
   },
 ];

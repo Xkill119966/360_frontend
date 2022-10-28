@@ -335,8 +335,7 @@ export default function Footer() {
 
       <footer
         className={
-          "p-4 fixed bg-white left-0 bottom-0  h-[484px] w-full lg:hidden xl:hidden md:hidden sm:block " +
-          `${footerClass}`
+          "p-4  bg-white left-0 bottom-0  h-[484px] w-full lg:hidden xl:hidden md:hidden sm:block " 
         }
       >
         <div className="w-[220px]">

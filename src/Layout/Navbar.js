@@ -68,7 +68,7 @@ export default function Navbar() {
           About Us
         </p>
         <Link
-          to="/form"
+          to={pathname === "/form" ? "/" : "/form"}
           class="text-white bg-primary focus:outline-none font-medium rounded text-sm px-5 py-2.5 text-center md:mr-0 font-workSans"
         >
           {linkText}
