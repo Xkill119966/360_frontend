@@ -12,17 +12,10 @@ const parseMultipartPayload = (payload, headers) => {
     return payload;
   }
 };
-const callApi = ({
-  endpoint,
-  rootUrl,
-  method,
-  payload,
-  headers,
-  noAuth,
-  isRecipient,
-}) => {
-  const root = rootUrl ? rootUrl : ``;
-  const url = root + endpoint;
+export const callApi = ({ endpoint, method, payload, headers }) => {
+  const rootUrl = "http://localhost:8000/api/v1/";
+  const url = rootUrl + endpoint;
+
   const query = {
     method,
     url,
@@ -34,19 +27,6 @@ const callApi = ({
         ...headers,
       }
     : { "Content-Type": "application/json", "X-Requested-With": "" };
-  if (!noAuth && !isRecipient) {
-    query.headers = {
-      ...query.headers,
-      ...{ Authorization: `${localStorage.getItem("TOKEN")}` },
-    };
-  }
-
-  if (!noAuth && isRecipient) {
-    query.headers = {
-      ...query.headers,
-      ...{ Authorization: `${localStorage.getItem("RECIPIENT_TOKEN")}` },
-    };
-  }
 
   const methods = ["put", "post", "patch", "delete"];
   query.method = method ? method : null;
