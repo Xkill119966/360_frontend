@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Modal from "../components/Modal";
 import ImageSlider from "../components/Slider";
 import { SliderData } from "../constants";
+import { callApi } from "../api";
 export default function FormPage() {
   const [showModal, setShowModal] = useState(false);
+  const [fillSuccess, setFillSuccess] = useState(false);
   const [input, setInput] = useState({
     centerName: "",
     centerAddress: "",
@@ -19,11 +21,12 @@ export default function FormPage() {
 
     // Age Rates
     sixMonthAndTwelveMonth: false,
-    TwelveMonthAndTwentyFourMonth: false,
+    twelveMonthAndTwentyFourMonth: false,
     twoYearAndTwelveYear: false,
     fourYearAndSixYear: false,
     sevenYear: false,
 
+    // Categories
     artAndCraft: false,
     taekwondon: false,
     threeGAbacusAndCreativeMaths: false,
@@ -44,8 +47,37 @@ export default function FormPage() {
     gymnastics: false,
   });
 
-  const handleInputChange = (e) => {};
+  const handleInputChange = (event) => {
+    const target = event.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    const name = target.name;
+    setInput({
+      ...input,
+      [name]: value,
+    });
+  };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const { status } = await callApi({
+      method: "post",
+      endpoint: "create/center",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      payload: input,
+    });
+    if (status === 200) {
+      setFillSuccess(true);
+    } else {
+      alert("call to api failed");
+    }
+  };
+
+  if (fillSuccess) {
+    return <Navigate to="/thanks" replace={true} />;
+  }
   return (
     <>
       <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
@@ -58,7 +90,9 @@ export default function FormPage() {
             Sign up before launch to get $100 worth of credit !
           </h1>
           <div className="my-4 flex">
-            <p className="text-gray my-4 font-gordita">Join with us to get more leads !</p>
+            <p className="text-gray my-4 font-gordita">
+              Join with us to get more leads !
+            </p>
             <div className="flex mt-4 mx-2 text-left">
               <a
                 className="font-bold text-md text-blue-800 hover:text-blue-800 font-gordita"
@@ -80,7 +114,7 @@ export default function FormPage() {
                   stroke-linejoin="round"
                   d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
                 />
-                </svg>
+              </svg>
             </div>
           </div>
         </div>
@@ -89,7 +123,7 @@ export default function FormPage() {
             <div className="my-4">
               <input
                 className="border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline font-workSans"
-                id="centerName"
+                name="centerName"
                 type="text"
                 placeholder="Center Name"
                 value={input.centerName}
@@ -99,7 +133,7 @@ export default function FormPage() {
             <div className="my-4 grid gap-x-1 grid-cols-2">
               <input
                 className="border py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline font-workSans"
-                id="centerAdd"
+                name="centerAddress"
                 type="text"
                 placeholder="Center Address"
                 value={input.centerAddress}
@@ -107,7 +141,7 @@ export default function FormPage() {
               />
               <input
                 className="border py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline font-workSans"
-                id="centerCode"
+                name="postalCode"
                 type="text"
                 placeholder="Center Postal Code"
                 value={input.postalCode}
@@ -117,7 +151,7 @@ export default function FormPage() {
             <div className="my-4">
               <input
                 className="border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline font-workSans"
-                id="centerPhone"
+                name="centerPhone"
                 type="tel"
                 placeholder="Center Phone Number"
                 pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
@@ -128,10 +162,10 @@ export default function FormPage() {
             <div className="my-4">
               <input
                 className="border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline font-workSans"
-                id="centerEmail"
+                name="centerEmail"
                 type="email"
                 placeholder="Center Email"
-                value={input.centerAddress}
+                value={input.centerEmail}
                 onChange={handleInputChange}
               />
             </div>
@@ -141,7 +175,7 @@ export default function FormPage() {
             <div className="grid xl:grid-cols-2 lg:grid-cols-2 mb:grid-cols-2 sm:grid-cols-1 font-gordita-bold">
               <div className="my-4 text-left">
                 <input
-                  id="vue-checkbox"
+                  name="sixMonthAndTwelveMonth"
                   type="checkbox"
                   checked={input.sixMonthAndTwelveMonth}
                   onChange={handleInputChange}
@@ -157,9 +191,9 @@ export default function FormPage() {
 
               <div className="my-4 text-left">
                 <input
-                  id="vue-checkbox"
+                  name="twelveMonthAndTwentyFourMonth"
                   type="checkbox"
-                  checked={input.TwelveMonthAndTwentyFourMonth}
+                  checked={input.twelveMonthAndTwentyFourMonth}
                   onChange={handleInputChange}
                   className="w-4 h-4 text-primary accent-primary bg-gray-100 rounded border-gray-300 focus:ring-primary dark:focus:ring-primary dark:ring-primary focus:ring-2 dark:bg-primary dark:border-gray-500"
                 />
@@ -174,7 +208,7 @@ export default function FormPage() {
             <div className="grid xl:grid-cols-2 lg:grid-cols-2 mb:grid-cols-2 sm:grid-cols-1 font-gordita-bold">
               <div className="my-4 text-left">
                 <input
-                  id="vue-checkbox"
+                  name="twoYearAndTwelveYear"
                   type="checkbox"
                   checked={input.twoYearAndTwelveYear}
                   onChange={handleInputChange}
@@ -190,7 +224,7 @@ export default function FormPage() {
 
               <div className="my-4 text-left">
                 <input
-                  id="vue-checkbox"
+                  name="fourYearAndSixYear"
                   type="checkbox"
                   checked={input.fourYearAndSixYear}
                   onChange={handleInputChange}
@@ -207,7 +241,7 @@ export default function FormPage() {
             <div className="grid xl:grid-cols-2 lg:grid-cols-2 mb:grid-cols-2 sm:grid-cols-1 font-gordita-bold">
               <div className="my-4 text-left">
                 <input
-                  id="vue-checkbox"
+                  name="sevenYear"
                   type="checkbox"
                   checked={input.sevenYear}
                   onChange={handleInputChange}
@@ -229,6 +263,7 @@ export default function FormPage() {
                 <input
                   id="vue-checkbox"
                   type="checkbox"
+                  name="artAndCraft"
                   checked={input.artAndCraft}
                   onChange={handleInputChange}
                   className="w-4 h-4 text-primary accent-primary bg-gray-100 rounded border-gray-300 focus:ring-primary dark:focus:ring-primary dark:ring-primary focus:ring-2 dark:bg-primary dark:border-gray-500"
@@ -245,6 +280,7 @@ export default function FormPage() {
                 <input
                   id="vue-checkbox"
                   type="checkbox"
+                  name="phonicsAndEnglish"
                   checked={input.phonicsAndEnglish}
                   onChange={handleInputChange}
                   className="w-4 h-4 text-primary accent-primary bg-gray-100 rounded border-gray-300 focus:ring-primary dark:focus:ring-primary dark:ring-primary focus:ring-2 dark:bg-primary dark:border-gray-500"
@@ -262,6 +298,7 @@ export default function FormPage() {
                 <input
                   id="vue-checkbox"
                   type="checkbox"
+                  name="taekwondon"
                   checked={input.taekwondon}
                   onChange={handleInputChange}
                   className="w-4 h-4 text-primary accent-primary bg-gray-100 rounded border-gray-300 focus:ring-primary dark:focus:ring-primary dark:ring-primary focus:ring-2 dark:bg-primary dark:border-gray-500"
@@ -278,6 +315,7 @@ export default function FormPage() {
                 <input
                   id="vue-checkbox"
                   type="checkbox"
+                  name="softSkills"
                   checked={input.softSkills}
                   onChange={handleInputChange}
                   className="w-4 h-4 text-primary accent-primary bg-gray-100 rounded border-gray-300 focus:ring-primary dark:focus:ring-primary dark:ring-primary focus:ring-2 dark:bg-primary dark:border-gray-500"
@@ -295,6 +333,7 @@ export default function FormPage() {
                 <input
                   id="vue-checkbox"
                   type="checkbox"
+                  name="threeGAbacusAndCreativeMaths"
                   checked={input.threeGAbacusAndCreativeMaths}
                   onChange={handleInputChange}
                   className="w-4 h-4 text-primary accent-primary bg-gray-100 rounded border-gray-300 focus:ring-primary dark:focus:ring-primary dark:ring-primary focus:ring-2 dark:bg-primary dark:border-gray-500"
@@ -312,6 +351,7 @@ export default function FormPage() {
                   id="vue-checkbox"
                   type="checkbox"
                   checked={input.chinese}
+                  name="chinese"
                   onChange={handleInputChange}
                   className="w-4 h-4 text-primary accent-primary bg-gray-100 rounded border-gray-300 focus:ring-primary dark:focus:ring-primary dark:ring-primary focus:ring-2 dark:bg-primary dark:border-gray-500"
                 />
@@ -328,6 +368,7 @@ export default function FormPage() {
                 <input
                   id="vue-checkbox"
                   type="checkbox"
+                  name="swimming"
                   checked={input.swimming}
                   onChange={handleInputChange}
                   className="w-4 h-4 text-primary accent-primary bg-gray-100 rounded border-gray-300 focus:ring-primary dark:focus:ring-primary dark:ring-primary focus:ring-2 dark:bg-primary dark:border-gray-500"
@@ -344,6 +385,7 @@ export default function FormPage() {
                 <input
                   id="vue-checkbox"
                   type="checkbox"
+                  name="musicAndDance"
                   checked={input.musicAndDance}
                   onChange={handleInputChange}
                   className="w-4 h-4 text-primary accent-primary bg-gray-100 rounded border-gray-300 focus:ring-primary dark:focus:ring-primary dark:ring-primary focus:ring-2 dark:bg-primary dark:border-gray-500"
@@ -361,6 +403,7 @@ export default function FormPage() {
                 <input
                   id="vue-checkbox"
                   type="checkbox"
+                  name="speechAndDrama"
                   checked={input.speechAndDrama}
                   onChange={handleInputChange}
                   className="w-4 h-4 text-primary accent-primary bg-gray-100 rounded border-gray-300 focus:ring-primary dark:focus:ring-primary dark:ring-primary focus:ring-2 dark:bg-primary dark:border-gray-500"
@@ -377,6 +420,7 @@ export default function FormPage() {
                 <input
                   id="vue-checkbox"
                   type="checkbox"
+                  name="codingAndProgramming"
                   checked={input.codingAndProgramming}
                   onChange={handleInputChange}
                   className="w-4 h-4 text-primary accent-primary bg-gray-100 rounded border-gray-300 focus:ring-primary dark:focus:ring-primary dark:ring-primary focus:ring-2 dark:bg-primary dark:border-gray-500"
@@ -394,6 +438,7 @@ export default function FormPage() {
                 <input
                   id="vue-checkbox"
                   type="checkbox"
+                  name="stem"
                   checked={input.stem}
                   onChange={handleInputChange}
                   className="w-4 h-4 text-primary accent-primary bg-gray-100 rounded border-gray-300 focus:ring-primary dark:focus:ring-primary dark:ring-primary focus:ring-2 dark:bg-primary dark:border-gray-500"
@@ -410,6 +455,7 @@ export default function FormPage() {
                 <input
                   id="vue-checkbox"
                   type="checkbox"
+                  name="multiSports"
                   checked={input.multiSports}
                   onChange={handleInputChange}
                   className="w-4 h-4 text-primary accent-primary bg-gray-100 rounded border-gray-300 focus:ring-primary dark:focus:ring-primary dark:ring-primary focus:ring-2 dark:bg-primary dark:border-gray-500"
@@ -427,6 +473,7 @@ export default function FormPage() {
                 <input
                   id="vue-checkbox"
                   type="checkbox"
+                  name="ballet"
                   checked={input.ballet}
                   onChange={handleInputChange}
                   className="w-4 h-4 text-primary accent-primary bg-gray-100 rounded border-gray-300 focus:ring-primary dark:focus:ring-primary dark:ring-primary focus:ring-2 dark:bg-primary dark:border-gray-500"
@@ -443,6 +490,7 @@ export default function FormPage() {
                 <input
                   id="vue-checkbox"
                   type="checkbox"
+                  name="musicalInstruments"
                   checked={input.musicalInstruments}
                   onChange={handleInputChange}
                   className="w-4 h-4 text-primary accent-primary bg-gray-100 rounded border-gray-300 focus:ring-primary dark:focus:ring-primary dark:ring-primary focus:ring-2 dark:bg-primary dark:border-gray-500"
@@ -461,6 +509,7 @@ export default function FormPage() {
                   id="vue-checkbox"
                   type="checkbox"
                   checked={input.cycling}
+                  name="cycling"
                   onChange={handleInputChange}
                   className="w-4 h-4 text-primary accent-primary bg-gray-100 rounded border-gray-300 focus:ring-primary dark:focus:ring-primary dark:ring-primary focus:ring-2 dark:bg-primary dark:border-gray-500"
                 />
@@ -476,6 +525,7 @@ export default function FormPage() {
                 <input
                   id="vue-checkbox"
                   type="checkbox"
+                  name="language"
                   checked={input.language}
                   onChange={handleInputChange}
                   className="w-4 h-4 text-primary accent-primary bg-gray-100 rounded border-gray-300 focus:ring-primary dark:focus:ring-primary dark:ring-primary focus:ring-2 dark:bg-primary dark:border-gray-500"
@@ -493,6 +543,7 @@ export default function FormPage() {
                 <input
                   id="vue-checkbox"
                   type="checkbox"
+                  name="soccer"
                   checked={input.soccer}
                   onChange={handleInputChange}
                   className="w-4 h-4 text-primary accent-primary bg-gray-100 rounded border-gray-300 focus:ring-primary dark:focus:ring-primary dark:ring-primary focus:ring-2 dark:bg-primary dark:border-gray-500"
@@ -509,6 +560,7 @@ export default function FormPage() {
                 <input
                   id="vue-checkbox"
                   type="checkbox"
+                  name="gymnastics"
                   checked={input.gymnastics}
                   onChange={handleInputChange}
                   className="w-4 h-4 text-primary accent-primary bg-gray-100 rounded border-gray-300 focus:ring-primary dark:focus:ring-primary dark:ring-primary focus:ring-2 dark:bg-primary dark:border-gray-500"
@@ -532,6 +584,7 @@ export default function FormPage() {
                 className="border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline font-workSans"
                 id="centerCode"
                 type="text"
+                name="name"
                 placeholder="Name"
                 value={input.name}
                 onChange={handleInputChange}
@@ -540,16 +593,19 @@ export default function FormPage() {
             <div className="my-4">
               <input
                 className="border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline font-workSans"
-                id="centerPhone"
+                id="Phone"
+                name="phoneNumber"
                 type="tel"
                 placeholder="Phone Number"
+                value={input.phoneNumber}
+                onChange={handleInputChange}
                 pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
               />
             </div>
             <div className="my-4">
               <input
                 className="border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline font-workSans"
-                id="centerEmail"
+                name="email"
                 type="email"
                 placeholder="Email"
                 value={input.email}
@@ -560,6 +616,7 @@ export default function FormPage() {
               <button
                 className="bg-primary hover:bg-primary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full font-workSans"
                 type="button"
+                onClick={handleSubmit}
               >
                 Submit
               </button>
