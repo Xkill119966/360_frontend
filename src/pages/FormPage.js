@@ -83,7 +83,7 @@ export default function FormPage() {
       <Modal isVisible={showModal}>
         <ImageSlider slides={SliderData} onClose={() => setShowModal(false)} />
       </Modal>
-      <div className={"px-8 pt-6"}>
+      <div className={"px-8 pt-6"} id="formPage">
         <div className="xl:ml-64 xl:mr-52 lg:ml-24 lg:mr-20 md:ml-16 md:mr-12 sm:ml-4 sm:mr-2 pt-16">
           <p className="text-dark font-gordita">We are launching soon !</p>
           <h1 className="my-4 font-bold text-gray-900 xl:text-7xl lg:text-6xl md:text-4xl sm:text-3xl font-gordita-bold">

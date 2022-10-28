@@ -4,7 +4,7 @@ export default function Footer() {
   const { pathname } = useLocation();
   let footerClass = pathname === "/form" ? "" : "fixed";
   return (
-    <>
+    <div id="mainFooter">
       <footer
         className={
           "p-4 bg-white left-0 bottom-0  w-full hidden lg:block xl:block " +
@@ -491,6 +491,6 @@ export default function Footer() {
           </ul>
         </div>
       </footer>
-    </>
+    </div>
   );
 }
