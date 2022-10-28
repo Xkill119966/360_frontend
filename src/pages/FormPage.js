@@ -71,7 +71,7 @@ export default function FormPage() {
     if (status === 200) {
       setFillSuccess(true);
     } else {
-      alert("call to api failed");
+      alert("api call failed");
     }
   };
 
