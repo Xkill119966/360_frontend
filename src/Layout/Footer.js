@@ -1,10 +1,10 @@
 import React from "react";
 export default function footer() {
   return (
-    <footer className="p-4 bg-white fixed left-0 bottom-0  w-full">
+    <footer className="p-4 bg-white left-0 bottom-0  w-full">
       <div className="md:flex md:justify-between pl-20 pr-6">
         <div className="w-96">
-          <ul className="text-gray-600 dark:text-gray-400">
+          <ul className="text-gray-600">
             <li className="flex items-center">
               <svg
                 width="39"
@@ -35,12 +35,12 @@ export default function footer() {
                   fill="#FE9800"
                 />
               </svg>
-              <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-black">
+              <span class="self-center text-xl font-semibold whitespace-nowrap font-inter">
                 360 Kids
               </span>
             </li>
 
-            <li className="mt-6">
+            <li className="mt-6 font-gordita text-darkgray">
               <span>© 2023 360kids </span>
               <br className="lg:hidden md:block" />
               <span> Copy right. All rights reserved </span>
@@ -90,10 +90,10 @@ export default function footer() {
           </ul>
         </div>
         <div className="w-72">
-          <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-black">
+          <h2 className="mb-6 text-sm font-semibold text-gray-900 font-gordita-bold">
             Company Info
           </h2>
-          <ul className="text-gray-600 dark:text-gray-400">
+          <ul className="text-gray-600 font-gordita text-darkgray">
             <li className="mb-4">
               <a href="#" className="hover:text-blue-700">
                 About Us
@@ -112,10 +112,10 @@ export default function footer() {
           </ul>
         </div>
         <div className="w-80">
-          <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-black">
+          <h2 className="mb-6 text-sm font-semibold text-gray-900 font-gordita-bold">
             Get In Touch
           </h2>
-          <ul className="text-gray-600 dark:text-gray-400">
+          <ul className="text-gray-600 font-gordita text-darkgray">
             <li className="mb-4 flex items-center">
               <svg
                 width="23"
@@ -130,9 +130,7 @@ export default function footer() {
                   fill="#FE9800"
                 />
               </svg>
-              <span class="self-center text-base  dark:text-black mr-2">
-                +651234566
-              </span>
+              <span class="self-center text-base mr-2">+651234566</span>
             </li>
             <li className="mb-4 flex items-center">
               <svg
@@ -150,9 +148,7 @@ export default function footer() {
                   fill="#FE9800"
                 />
               </svg>
-              <span class="self-center text-base  dark:text-black ml-3">
-                360kids@gmail.com
-              </span>
+              <span class="self-center text-base ml-3">360kids@gmail.com</span>
             </li>
           </ul>
         </div>

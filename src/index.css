@@ -31,3 +31,8 @@ code {
   font-family: "Gordita-Bold";
   src: url("../public/fonts/Gordita-Bold.otf");
 }
+
+@font-face {
+  font-family: "Inter";
+  src: url("../public/fonts/Inter-Bold.ttf");
+}

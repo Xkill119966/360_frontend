@@ -33,6 +33,7 @@ module.exports = {
         'gordita':['Gordita'],
         'workSans':['WorkSans'],
         'gordita-bold':['Gordita-Bold'],
+        'inter':['Inter']
       }
     },
   },
