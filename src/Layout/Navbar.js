@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Camera } from "react-feather";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 export default function Navbar() {
+  const { pathname } = useLocation();
+  let linkText = pathname !== "/form" ? "Join As Center" : "Search Center";
   const [navbarOpen, setNavbarOpen] = React.useState(false);
 
   return (
@@ -69,7 +71,7 @@ export default function Navbar() {
           to="/form"
           class="text-white bg-primary focus:outline-none font-medium rounded text-sm px-5 py-2.5 text-center md:mr-0 font-workSans"
         >
-          Join As Center
+          {linkText}
         </Link>
       </div>
     </nav>

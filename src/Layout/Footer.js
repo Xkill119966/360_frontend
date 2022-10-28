@@ -1,8 +1,16 @@
 import React from "react";
-export default function footer() {
+import { useLocation } from "react-router-dom";
+export default function Footer() {
+  const { pathname } = useLocation();
+  let footerClass = pathname === "/form" ? "" : "fixed";
   return (
     <>
-      <footer className="p-4 fixed bg-white left-0 bottom-0  w-full hidden lg:block xl:block">
+      <footer
+        className={
+          "p-4 bg-white left-0 bottom-0  w-full hidden lg:block xl:block " +
+          `${footerClass}`
+        }
+      >
         {/* For XL and LG Screen */}
         <div className="flex justify-between pl-20 pr-6">
           <div className="w-96">
@@ -159,7 +167,12 @@ export default function footer() {
         </div>
       </footer>
 
-      <footer className="p-4 fixed bg-white left-0 bottom-0  h-[324.18px] w-full lg:hidden xl:hidden sm:hidden md:block">
+      <footer
+        className={
+          "p-4  bg-white left-0 bottom-0  h-[324.18px] w-full lg:hidden xl:hidden sm:hidden md:block " +
+          `${footerClass}`
+        }
+      >
         <div className="flex">
           <div className="w-[220px]">
             <h2 className="mb-6 text-sm font-semibold text-gray-900 font-gordita-bold">
@@ -320,7 +333,12 @@ export default function footer() {
         </div>
       </footer>
 
-      <footer className="p-4 fixed bg-white left-0 bottom-0  h-[484px] w-full lg:hidden xl:hidden md:hidden sm:block">
+      <footer
+        className={
+          "p-4 fixed bg-white left-0 bottom-0  h-[484px] w-full lg:hidden xl:hidden md:hidden sm:block " +
+          `${footerClass}`
+        }
+      >
         <div className="w-[220px]">
           <h2 className="mb-6 text-sm font-semibold text-gray-900 font-gordita-bold">
             Company Info
