@@ -37,7 +37,7 @@ export default function LandingPage() {
           </h3>
         </div>
 
-        <div className="mt-10 text-left col-span-3">
+        <div className="mt-10 sm:mt-8 text-left col-span-3">
           <Link to={"/form"} className="flex items-center">
             <span className="font-bold text-lg text-blue-800 hover:text-blue-800 font-gordita">
               Join As A Center

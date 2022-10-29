@@ -42,16 +42,18 @@ const ImageSlider = ({ slides, onClose }) => {
             <div key={index}>
               {index === current && (
                 <figure className="md:flex p-8 md:p-0">
+                  <div className=" xl:w-[528x] xl:h-[426x] lg:w-[342x] lg:h-[280x]">
                   <img
-                    className="mx-auto w-[520x] h-[426x]"
+                    className="mx-auto"
                     src={slide.image}
                     alt=""
                     width="528"
                     height="426"
                   />
+                  </div>
                   <div className="pt-6 md:p-8 text-left space-y-4 flex flex-col">
-                    <div className="h-[354px]">
-                      <div className="w-[299px] h-[184px]">
+                    <div className="xl:h-[354px] lg:h-[280px]">
+                      <div className="xl:w-[299px] xl:h-[184px] lg:w-[289px] lg:h-[80px]">
                         <blockquote>
                           <p className="text-4xl font-medium font-gordita-bold">
                             {slide.description}

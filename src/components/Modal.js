@@ -22,10 +22,10 @@ export default function Modal({ isVisible, children, onClose }) {
   return (
     <div
       className={
-        "absolute inset-0 blur-0 flex justify-center items-center top-10"
+        "absolute inset-0 blur-0 flex justify-center items-center xl:top-10 lg:top-96"
       }
     >
-      <div className="w-[1024x] h-[597x] flex flex-col">
+      <div className="xl:w-[1024x] xl:h-[597x] lg:w-[800x] lg:h-[451x] flex flex-col">
         <div className="bg-white p-2 rounded-xl">{children}</div>
       </div>
     </div>
